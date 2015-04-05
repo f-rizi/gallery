@@ -1,0 +1,48 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context="com.example.fatemeh.gallery.fragments.AboutFragment"
+    android:paddingBottom="24dp"
+    android:paddingTop="24dp">
+
+    <TextView
+        android:id="@+id/application_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
+        android:layout_marginLeft="64dp"
+        android:layout_marginRight="64dp"
+        android:gravity="center_horizontal"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    <com.example.fatemeh.gallery.views.AboutItemLayout
+        android:id="@+id/version_code1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="@string/about_version"/>
+
+    <com.example.fatemeh.gallery.views.AboutItemLayout
+        android:id="@+id/last_update1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="@string/about_last_update"/>
+
+    <TextView
+        android:id="@+id/author_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:layout_marginTop="32dp"/>
+
+    <TextView
+        android:id="@+id/author_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+
+</LinearLayout>

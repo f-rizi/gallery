@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/item"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/extra_small_gap"
+    >
+
+    <com.example.fatemeh.gallery.views.SquareNetWorkImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"/>
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:layout_alignBottom="@id/image"
+        android:layout_gravity="bottom"
+        android:padding="@dimen/normal_gap"
+        android:background="#93646464"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title.Inverse"/>
+</RelativeLayout>

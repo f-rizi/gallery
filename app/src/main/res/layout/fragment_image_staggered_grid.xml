@@ -1,0 +1,19 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="@dimen/small_gap"
+    tools:context="com.example.fatemeh.gallery.fragments.ImageStaggeredGridFragment">
+
+    <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/images"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scrollbarStyle="outsideOverlay"
+        android:scrollbars="vertical"
+        android:fadeScrollbars="true"
+        android:clipToPadding="false"
+        android:paddingTop="?attr/actionBarSize" />
+
+</FrameLayout>

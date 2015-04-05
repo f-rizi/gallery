@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/images_setting_options_category_title">
+
+        <CheckBoxPreference
+            android:key="@string/key_show_viral_images_preference"
+            android:title="@string/title_show_viral_images_preference"
+            android:summary="@string/summary_show_viral_images_preference"
+            android:defaultValue="false"/>
+
+        <ListPreference
+            android:key="@string/key_section_preference"
+            android:title="@string/title_section_preference"
+            android:summary="@string/summary_section_preference"
+            android:defaultValue="hot"
+            android:entries="@array/section_array"
+            android:entryValues="@array/section_array" />
+
+        <ListPreference
+            android:key="@string/key_window_preference"
+            android:title="@string/title_window_preference"
+            android:summary="@string/summary_window_preference"
+            android:defaultValue="day"
+            android:entries="@array/window_array"
+            android:entryValues="@array/window_array" />
+
+        <ListPreference
+            android:key="@string/key_sort_by_preference"
+            android:title="@string/title_sort_by_preference"
+            android:summary="@string/summary_sort_by_preference"
+            android:defaultValue="viral"
+            android:entries="@array/sort_array"
+            android:entryValues="@array/sort_array" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/ui_category_title">
+        <ListPreference
+            android:key="@string/key_list_type_preference"
+            android:title="@string/title_list_type_preference"
+            android:summary="@string/summary_list_type_preference"
+            android:defaultValue="List"
+            android:entries="@array/list_type_array"
+            android:entryValues="@array/list_type_array" />
+    </PreferenceCategory>
+</PreferenceScreen>

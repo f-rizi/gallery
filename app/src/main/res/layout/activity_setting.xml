@@ -1,0 +1,19 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="com.example.fatemeh.gallery.activities.SettingsActivity">
+
+
+    <FrameLayout
+        android:id="@+id/fragment_place_holder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="?attr/actionBarSize"/>
+
+    <include
+        android:id="@+id/toolBar"
+        layout="@layout/main_tool_bar" />
+
+</FrameLayout>
+
