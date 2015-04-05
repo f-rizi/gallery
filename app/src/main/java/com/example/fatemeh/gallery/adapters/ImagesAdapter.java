@@ -46,15 +46,21 @@ public class ImagesAdapter extends
     }
 
     protected int getItemLayoutID() {
-        return R.layout.item_image_list_layout;
+        return R.layout.item_list_layout;
     }
 
     @Override
     public void onBindViewHolder(final ImageViewHolder holder, int position) {
         final Image image = images.get(position);
 
+        int linkLength = image.getLink().length();
+        String extension = image.getLink().substring(linkLength - 4, linkLength);
+        String s = image.getLink().substring(0, linkLength - 4);
+        s = s + "m" + extension;
+
         holder.descriptionTextView.setText(image.getTitle());
-        holder.networkImageView.setImageUrl(image.getLink(), imageLoader);
+        holder.networkImageView.setDefaultImageResId(R.drawable.placeholder);
+        holder.networkImageView.setImageUrl(s, imageLoader);
 
         holder.itemLayout.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -21,7 +21,7 @@
         android:singleLine="true"
         android:layout_alignBottom="@id/image"
         android:layout_gravity="bottom"
-        android:padding="@dimen/normal_gap"
-        android:background="#93646464"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title.Inverse"/>
+        android:padding="@dimen/small_gap"
+        android:background="@color/transparent_gray"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead.Inverse"/>
 </RelativeLayout>

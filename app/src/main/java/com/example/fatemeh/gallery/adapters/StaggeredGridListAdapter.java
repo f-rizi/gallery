@@ -8,15 +8,16 @@ import com.example.fatemeh.gallery.models.Image;
 import java.util.List;
 
 /**
- * Created by fatemeh on 03/04/15.
+ * Created by fatemeh on 05/04/15, 17:51.
  */
-public class GridListAdapter extends ImagesAdapter {
+public class StaggeredGridListAdapter extends ImagesAdapter {
 
-    public GridListAdapter(Context context, List<Image> images) {
+    public StaggeredGridListAdapter(Context context, List<Image> images) {
         super(context, images);
     }
 
     protected int getItemLayoutID() {
-        return R.layout.item_grid_layout;
+        return R.layout.item_staggered_list_layout;
     }
+
 }

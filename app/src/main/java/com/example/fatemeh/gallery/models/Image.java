@@ -16,12 +16,15 @@ import java.util.List;
 
 public class Image implements Parcelable{
 
-    public static final String ID_KEY = "id";
-    public static final String LINK_KEY = "link";
-    public static final String TITLE_KEY = "title";
-    public static final String UP_VOTES_KEY = "ups";
-    public static final String DOWN_VOTES_KEY = "downs";
-    public static final String DESCRIPTION_KEY = "description";
+    private static final String ID_KEY = "id";
+    private static final String LINK_KEY = "link";
+    private static final String TYPE_KEY = "type";
+    private static final String TITLE_KEY = "title";
+    private static final String WIDTH_KEY = "width";
+    private static final String UP_VOTES_KEY = "ups";
+    private static final String HEIGHT_KEY = "height";
+    private static final String DOWN_VOTES_KEY = "downs";
+    private static final String DESCRIPTION_KEY = "description";
 
     private String id;
     private String link;
@@ -32,21 +35,6 @@ public class Image implements Parcelable{
     private int downVotes;
 
     public Image() {}
-
-    public Image(JSONObject imageObject) {
-        try {
-            id = imageObject.getString(ID_KEY);
-            link = imageObject.getString(LINK_KEY);
-            title = imageObject.getString(TITLE_KEY);
-            description = imageObject.getString(DESCRIPTION_KEY);
-
-            upVotes = imageObject.getInt(UP_VOTES_KEY);
-            downVotes = imageObject.getInt(DOWN_VOTES_KEY);
-
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
-    }
 
     public String getDescription() {
         return description;
@@ -81,16 +69,13 @@ public class Image implements Parcelable{
             try {
                 JSONObject imageJsonObject = imagesJsonArray.getJSONObject(i);
 
-                Image image = new Image();
-                image.id = imageJsonObject.getString(ID_KEY);
-                image.link = imageJsonObject.getString(LINK_KEY);
-                image.title = imageJsonObject.getString(TITLE_KEY);
-                image.description = imageJsonObject.getString(DESCRIPTION_KEY);
+                if(shouldAddToList(imageJsonObject)) {
+                    Image image = imageFromJsonObject(imageJsonObject);
 
-                image.upVotes = imageJsonObject.getInt(UP_VOTES_KEY);
-                image.downVotes = imageJsonObject.getInt(DOWN_VOTES_KEY);
-
-                imageList.add(image);
+                    if(image != null) {
+                        imageList.add(image);
+                    }
+                }
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -98,6 +83,62 @@ public class Image implements Parcelable{
         }
 
         return imageList;
+    }
+
+    private static boolean shouldAddToList(JSONObject imageJsonObject) {
+        boolean hasCorrectFormat = false;
+        boolean hasCorrectSize = false;
+
+        try {
+            if(imageJsonObject.has(TYPE_KEY)){
+                String type = imageJsonObject.getString(TYPE_KEY);
+                if (type.startsWith("image/")) {
+                    hasCorrectFormat = true;
+                }
+            }
+
+//            int width = imageJsonObject.getInt(WIDTH_KEY);
+//            int height = imageJsonObject.getInt(HEIGHT_KEY);
+//
+//            if(width < 500 && height < 500) {
+//                hasCorrectSize = true;
+//            }
+
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return hasCorrectFormat;
+    }
+
+    private static Image imageFromJsonObject(JSONObject imageJsonObject) {
+        Image image = new Image();
+
+        try {
+            if(!imageJsonObject.isNull(ID_KEY)) {
+                image.id = imageJsonObject.getString(ID_KEY);
+            }
+
+            if(!imageJsonObject.isNull(LINK_KEY)) {
+                image.link = imageJsonObject.getString(LINK_KEY);
+            }
+
+            if(!imageJsonObject.isNull(TITLE_KEY)) {
+                image.title = imageJsonObject.getString(TITLE_KEY);
+            }
+
+            if(!imageJsonObject.isNull(DESCRIPTION_KEY)) {
+                image.description = imageJsonObject.getString(DESCRIPTION_KEY);
+            }
+
+            image.upVotes = imageJsonObject.getInt(UP_VOTES_KEY);
+            image.downVotes = imageJsonObject.getInt(DOWN_VOTES_KEY);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return image;
     }
 
     @Override

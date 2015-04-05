@@ -247,24 +247,23 @@ public class MainActivity extends ActionBarActivity implements
     }
 
     private void showImagesOnUI() {
-        if (shouldChangeFragment()) {
-            FragmentManager fragmentManager = getFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            Fragment fragment = null;
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction =
+                fragmentManager.beginTransaction();
+        Fragment fragment = null;
 
-            if (currentFragmentType.equals("List")) {
-                fragment = ImageListFragment.newInstance(imageList);
+        if (currentFragmentType.equals("List")) {
+            fragment = ImageListFragment.newInstance(imageList);
 
-            } else if (currentFragmentType.equals("Grid")) {
-                fragment = ImageGridListFragment.newInstance(imageList);
+        } else if (currentFragmentType.equals("Grid")) {
+            fragment = ImageGridListFragment.newInstance(imageList);
 
-            } else if (currentFragmentType.equals("Staggered Grid")) {
-                fragment = ImageStaggeredGridFragment.newInstance(imageList);
-            }
-
-            fragmentTransaction.replace(R.id.fragment_place_holder, fragment);
-            fragmentTransaction.commit();
+        } else if (currentFragmentType.equals("Staggered Grid")) {
+            fragment = ImageStaggeredGridFragment.newInstance(imageList);
         }
+
+        fragmentTransaction.replace(R.id.fragment_place_holder, fragment);
+        fragmentTransaction.commit();
     }
 
     @Override

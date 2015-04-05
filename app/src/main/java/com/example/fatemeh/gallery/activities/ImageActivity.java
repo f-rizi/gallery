@@ -96,8 +96,18 @@ public class ImageActivity extends ActionBarActivity {
                     }
                 });
 
-        titleTextView.setText(image.getTitle());
-        descriptionTextView.setText(image.getDescription());
+        if(image.getTitle() != null) {
+            titleTextView.setText(image.getTitle());
+        } else {
+            titleTextView.setText(R.string.image_no_title);
+        }
+
+        if(image.getDescription() != null) {
+            descriptionTextView.setText(image.getDescription());
+        } else {
+            descriptionTextView.setText(R.string.image_no_Description);
+        }
+
 
         upVotesLayout.setContentText(image.getUpVotes() + "");
         downVotesLayout.setContentText(image.getDownVotes() + "");

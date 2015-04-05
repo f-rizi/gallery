@@ -22,8 +22,10 @@
     <string name="image_down_votes">Down votes</string>
     <string name="image_score">Score</string>
     <string name="image_details">Details</string>
-    <string name="image_description">Image</string>
+    <string name="image_description">Description</string>
     <string name="image_activity_title">Image Details</string>
+    <string name="image_no_title">No Title</string>
+    <string name="image_no_Description">No Description</string>
 
 
     <!-- Settings Screen-->

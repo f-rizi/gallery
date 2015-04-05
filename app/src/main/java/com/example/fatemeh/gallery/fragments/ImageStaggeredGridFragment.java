@@ -7,6 +7,7 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import com.example.fatemeh.gallery.R;
 import com.example.fatemeh.gallery.adapters.ImagesAdapter;
+import com.example.fatemeh.gallery.adapters.StaggeredGridListAdapter;
 import com.example.fatemeh.gallery.models.Image;
 
 import java.util.ArrayList;
@@ -44,7 +45,8 @@ public class ImageStaggeredGridFragment extends BaseListFragment {
     }
 
     public ImagesAdapter getImageAdapter() {
-        ImagesAdapter imagesAdapter = new ImagesAdapter(getActivity(), imageList);
+        StaggeredGridListAdapter imagesAdapter =
+                new StaggeredGridListAdapter(getActivity(), imageList);
 
         return imagesAdapter;
     }
