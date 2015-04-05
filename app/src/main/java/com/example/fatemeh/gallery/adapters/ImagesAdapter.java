@@ -58,7 +58,12 @@ public class ImagesAdapter extends
         String link = image.getLink().substring(0, linkLength - 4);
         link = link + "m" + extension;
 
-        holder.descriptionTextView.setText(image.getTitle());
+        if(image.getDescription() != null) {
+            holder.descriptionTextView.setText(image.getDescription());
+        } else {
+            holder.descriptionTextView.setText(R.string.image_no_Description);
+        }
+
         holder.networkImageView.setDefaultImageResId(R.drawable.placeholder);
         holder.networkImageView.setImageUrl(link, imageLoader);
 
