@@ -87,7 +87,6 @@ public class Image implements Parcelable{
 
     private static boolean shouldAddToList(JSONObject imageJsonObject) {
         boolean hasCorrectFormat = false;
-        boolean hasCorrectSize = false;
 
         try {
             if(imageJsonObject.has(TYPE_KEY)){
@@ -96,13 +95,6 @@ public class Image implements Parcelable{
                     hasCorrectFormat = true;
                 }
             }
-
-//            int width = imageJsonObject.getInt(WIDTH_KEY);
-//            int height = imageJsonObject.getInt(HEIGHT_KEY);
-//
-//            if(width < 500 && height < 500) {
-//                hasCorrectSize = true;
-//            }
 
         }catch (Exception e) {
             e.printStackTrace();

@@ -55,12 +55,12 @@ public class ImagesAdapter extends
 
         int linkLength = image.getLink().length();
         String extension = image.getLink().substring(linkLength - 4, linkLength);
-        String s = image.getLink().substring(0, linkLength - 4);
-        s = s + "m" + extension;
+        String link = image.getLink().substring(0, linkLength - 4);
+        link = link + "m" + extension;
 
         holder.descriptionTextView.setText(image.getTitle());
         holder.networkImageView.setDefaultImageResId(R.drawable.placeholder);
-        holder.networkImageView.setImageUrl(s, imageLoader);
+        holder.networkImageView.setImageUrl(link, imageLoader);
 
         holder.itemLayout.setOnClickListener(new View.OnClickListener() {
             @Override
