@@ -46,7 +46,7 @@ public class ImagesAdapter extends
     }
 
     protected int getItemLayoutID() {
-        return R.layout.item_image_list_layout2;
+        return R.layout.item_image_list_layout;
     }
 
     @Override

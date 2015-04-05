@@ -1,6 +1,5 @@
 package com.example.fatemeh.gallery.fragments;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.app.DialogFragment;
 
@@ -91,15 +90,5 @@ public class AboutFragment extends DialogFragment {
         Dialog dialog = super.onCreateDialog(savedInstanceState);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         return dialog;
-    }
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
     }
 }

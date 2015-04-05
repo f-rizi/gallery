@@ -30,7 +30,6 @@ public abstract class BaseListFragment extends Fragment {
     protected ImagesAdapter imagesAdapter;
 
     public BaseListFragment() {
-        // Required empty public constructor
     }
 
     @Override

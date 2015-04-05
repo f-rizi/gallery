@@ -13,6 +13,7 @@ import java.util.List;
 /**
  * Created by fatemeh on 01/04/15.
  */
+
 public class Image implements Parcelable{
 
     public static final String ID_KEY = "id";
@@ -20,9 +21,7 @@ public class Image implements Parcelable{
     public static final String TITLE_KEY = "title";
     public static final String UP_VOTES_KEY = "ups";
     public static final String DOWN_VOTES_KEY = "downs";
-    public static final String ANIMATED_KEY = "animated";
     public static final String DESCRIPTION_KEY = "description";
-
 
     private String id;
     private String link;
@@ -32,7 +31,7 @@ public class Image implements Parcelable{
     private int upVotes;
     private int downVotes;
 
-    public Image() {};
+    public Image() {}
 
     public Image(JSONObject imageObject) {
         try {
@@ -81,7 +80,6 @@ public class Image implements Parcelable{
         for(int i = 0; i < listSize; i++) {
             try {
                 JSONObject imageJsonObject = imagesJsonArray.getJSONObject(i);
-                boolean animated = imageJsonObject.getBoolean(ANIMATED_KEY);
 
                 Image image = new Image();
                 image.id = imageJsonObject.getString(ID_KEY);
@@ -100,26 +98,6 @@ public class Image implements Parcelable{
         }
 
         return imageList;
-    }
-
-    public static List<Image> getDummyImages() {
-        int imagesSize = 20;
-        List<Image> images = new ArrayList<>();
-
-        for(int i = 0; i < imagesSize; i++) {
-            Image image = new Image();
-
-            image.id = "100" + i;
-            image.title = "Title for " + i;
-            image.description = "Description for " + i;
-
-            image.upVotes = i * 10;
-            image.downVotes = i * 4;
-
-            images.add(image);
-        }
-
-        return images;
     }
 
     @Override
