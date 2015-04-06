@@ -24,9 +24,9 @@ import java.util.List;
  */
 
 public class ImagesAdapter extends
-        RecyclerView.Adapter<ImagesAdapter.ImageViewHolder>{
+        RecyclerView.Adapter<ImagesAdapter.ImageViewHolder> {
 
-    private onItemInteractionListener listener;
+    private onItemInteractionListener2 listener;
 
     private Context context;
     private List<Image> images;
@@ -61,7 +61,7 @@ public class ImagesAdapter extends
         String link = image.getLink().substring(0, linkLength - 4);
         link = link + "m" + extension;
 
-        if(!TextUtils.isEmpty(image.getDescription())) {
+        if (!TextUtils.isEmpty(image.getDescription())) {
             holder.descriptionTextView.setText(image.getDescription());
         } else {
             holder.descriptionTextView.setText(R.string.image_no_Description);
@@ -100,11 +100,11 @@ public class ImagesAdapter extends
         }
     }
 
-    public void setOnListener(onItemInteractionListener listener) {
+    public void setOnListener(onItemInteractionListener2 listener) {
         this.listener = listener;
     }
 
-    public interface onItemInteractionListener {
+    public interface onItemInteractionListener2 {
         void onItemClick(Image image, Bitmap bitmap);
     }
 }

@@ -1,6 +1,7 @@
 package com.example.fatemeh.gallery.fragments;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -19,7 +20,9 @@ import com.example.fatemeh.gallery.models.Image;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class BaseListFragment extends Fragment {
+public abstract class BaseListFragment
+        extends Fragment
+        implements ImagesAdapter.onItemInteractionListener2 {
 
     private OnFragmentInteractionListener listener;
 
@@ -36,7 +39,7 @@ public abstract class BaseListFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if(savedInstanceState != null) {
+        if (savedInstanceState != null) {
             imageList = savedInstanceState.getParcelableArrayList(IMAGE_LIST_KEY);
 
         } else {
@@ -56,7 +59,7 @@ public abstract class BaseListFragment extends Fragment {
         imageRecyclerView.setLayoutManager(getLayoutManager());
 
         imagesAdapter = getImageAdapter();
-        imagesAdapter.setOnListener((ImagesAdapter.onItemInteractionListener)listener);
+        imagesAdapter.setOnListener(this);
         imageRecyclerView.setAdapter(imagesAdapter);
 
         imageRecyclerView.setOnScrollListener(new HidingScrollListener() {
@@ -97,13 +100,14 @@ public abstract class BaseListFragment extends Fragment {
         listener = null;
     }
 
-    public interface OnFragmentInteractionListener {
+    @Override
+    public void onItemClick(Image image, Bitmap bitmap) {
+        if (listener != null) {
+            listener.onImageClick(image, bitmap);
+        }
     }
 
-//    @Override
-//    public void onSaveInstanceState(Bundle outState) {
-//        super.onSaveInstanceState(outState);
-//
-//        outState.putParcelableArrayList(IMAGE_LIST_KEY, (ArrayList<? extends Parcelable>) imageList);
-//    }
+    public interface OnFragmentInteractionListener {
+        void onImageClick(Image image, Bitmap bitmap);
+    }
 }

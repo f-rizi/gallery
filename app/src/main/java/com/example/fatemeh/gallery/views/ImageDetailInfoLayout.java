@@ -8,7 +8,7 @@ import com.example.fatemeh.gallery.R;
 /**
  * Created by fatemeh on 01/04/15.
  */
-public class ImageDetailInfoLayout extends AboutItemLayout{
+public class ImageDetailInfoLayout extends AboutItemLayout {
 
     public ImageDetailInfoLayout(Context context) {
         super(context);

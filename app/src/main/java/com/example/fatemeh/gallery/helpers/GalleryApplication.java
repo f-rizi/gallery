@@ -32,7 +32,7 @@ public class GalleryApplication extends Application {
     }
 
     public RequestQueue getRequestQueue() {
-        if(requestQueue == null) {
+        if (requestQueue == null) {
             requestQueue = Volley.newRequestQueue(getApplicationContext());
         }
 
@@ -42,7 +42,7 @@ public class GalleryApplication extends Application {
     public ImageLoader getImageLoader() {
         getRequestQueue();
 
-        if(imageLoader == null) {
+        if (imageLoader == null) {
             imageLoader = new ImageLoader(this.requestQueue,
                     new LruBitmapCache());
         }

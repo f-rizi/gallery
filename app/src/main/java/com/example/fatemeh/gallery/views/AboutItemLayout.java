@@ -39,7 +39,7 @@ public class AboutItemLayout extends LinearLayout {
 
         final String title = array.getString(R.styleable.AboutItemLayout_title);
 
-        if(!TextUtils.isEmpty(title)) {
+        if (!TextUtils.isEmpty(title)) {
             titleTextView.setText(title);
         }
 

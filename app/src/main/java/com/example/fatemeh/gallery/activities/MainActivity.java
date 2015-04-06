@@ -27,7 +27,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.fatemeh.gallery.R;
-import com.example.fatemeh.gallery.adapters.ImagesAdapter;
 import com.example.fatemeh.gallery.fragments.AboutFragment;
 import com.example.fatemeh.gallery.fragments.BaseListFragment;
 import com.example.fatemeh.gallery.fragments.ImageGridListFragment;
@@ -48,9 +47,8 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 
 
-public class MainActivity extends ActionBarActivity implements
-        BaseListFragment.OnFragmentInteractionListener,
-        ImagesAdapter.onItemInteractionListener {
+public class MainActivity extends ActionBarActivity
+        implements BaseListFragment.OnFragmentInteractionListener {
 
     public static final String IMAGES_KEY = "images";
 
@@ -107,12 +105,12 @@ public class MainActivity extends ActionBarActivity implements
                 getString(R.string.key_show_viral_images_preference), true);
 
         currentImagesSection = preferences.getString(getString(
-                        R.string.key_section_preference), DEFAULT_SECTION);
+                R.string.key_section_preference), DEFAULT_SECTION);
         currentImagesWindow = preferences.getString(
                 getString(R.string.key_window_preference), DEFAULT_WINDOW);
 
         currentSortBy = preferences.getString(getString(
-                        R.string.key_sort_by_preference), DEFAULT_SORT_BY);
+                R.string.key_sort_by_preference), DEFAULT_SORT_BY);
         currentFragmentType = preferences.getString(
                 getString(R.string.key_list_type_preference), DEFAULT_LIST_TYPE);
     }
@@ -268,7 +266,7 @@ public class MainActivity extends ActionBarActivity implements
     }
 
     @Override
-    public void onItemClick(Image image, Bitmap bitmap) {
+    public void onImageClick(Image image, Bitmap bitmap) {
         int color = getImageColor(bitmap);
 
         Intent intent = new Intent(this, ImageActivity.class);
@@ -280,11 +278,11 @@ public class MainActivity extends ActionBarActivity implements
     private int getImageColor(Bitmap bitmap) {
         int color = getResources().getColor(R.color.blue_gray_700);
 
-        if(bitmap != null) {
-            Palette palette  = Palette.generate(bitmap, 32);
+        if (bitmap != null) {
+            Palette palette = Palette.generate(bitmap, 32);
             Palette.Swatch swatch = palette.getLightVibrantSwatch();
 
-            if(swatch != null) {
+            if (swatch != null) {
                 color = swatch.getRgb();
             }
         }
@@ -299,4 +297,5 @@ public class MainActivity extends ActionBarActivity implements
     private void disableSpinner() {
         findViewById(R.id.loading).setVisibility(View.GONE);
     }
+
 }

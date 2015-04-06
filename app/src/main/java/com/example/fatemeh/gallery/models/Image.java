@@ -14,7 +14,7 @@ import java.util.List;
  * Created by fatemeh on 01/04/15.
  */
 
-public class Image implements Parcelable{
+public class Image implements Parcelable {
 
     private static final String ID_KEY = "id";
     private static final String LINK_KEY = "link";
@@ -36,7 +36,8 @@ public class Image implements Parcelable{
     private int upVotes;
     private int downVotes;
 
-    public Image() {}
+    public Image() {
+    }
 
     public String getDescription() {
         return description;
@@ -71,14 +72,14 @@ public class Image implements Parcelable{
 
         int listSize = Math.min(60, imagesJsonArray.length());
 
-        for(int i = 0; i < listSize; i++) {
+        for (int i = 0; i < listSize; i++) {
             try {
                 JSONObject imageJsonObject = imagesJsonArray.getJSONObject(i);
 
-                if(shouldAddToList(imageJsonObject)) {
+                if (shouldAddToList(imageJsonObject)) {
                     Image image = imageFromJsonObject(imageJsonObject);
 
-                    if(image != null) {
+                    if (image != null) {
                         imageList.add(image);
                     }
                 }
@@ -95,14 +96,14 @@ public class Image implements Parcelable{
         boolean hasCorrectFormat = false;
 
         try {
-            if(imageJsonObject.has(TYPE_KEY)){
+            if (imageJsonObject.has(TYPE_KEY)) {
                 String type = imageJsonObject.getString(TYPE_KEY);
                 if (type.startsWith("image/")) {
                     hasCorrectFormat = true;
                 }
             }
 
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -113,19 +114,19 @@ public class Image implements Parcelable{
         Image image = new Image();
 
         try {
-            if(!imageJsonObject.isNull(ID_KEY)) {
+            if (!imageJsonObject.isNull(ID_KEY)) {
                 image.id = imageJsonObject.getString(ID_KEY);
             }
 
-            if(!imageJsonObject.isNull(LINK_KEY)) {
+            if (!imageJsonObject.isNull(LINK_KEY)) {
                 image.link = imageJsonObject.getString(LINK_KEY);
             }
 
-            if(!imageJsonObject.isNull(TITLE_KEY)) {
+            if (!imageJsonObject.isNull(TITLE_KEY)) {
                 image.title = imageJsonObject.getString(TITLE_KEY);
             }
 
-            if(!imageJsonObject.isNull(DESCRIPTION_KEY)) {
+            if (!imageJsonObject.isNull(DESCRIPTION_KEY)) {
                 image.description = imageJsonObject.getString(DESCRIPTION_KEY);
             }
 
