@@ -2,6 +2,7 @@ package com.example.fatemeh.gallery.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,7 +59,7 @@ public class ImagesAdapter extends
         String link = image.getLink().substring(0, linkLength - 4);
         link = link + "m" + extension;
 
-        if(image.getDescription() != null) {
+        if(!TextUtils.isEmpty(image.getDescription())) {
             holder.descriptionTextView.setText(image.getDescription());
         } else {
             holder.descriptionTextView.setText(R.string.image_no_Description);

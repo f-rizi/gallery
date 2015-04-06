@@ -21,6 +21,7 @@ public class Image implements Parcelable{
     private static final String TYPE_KEY = "type";
     private static final String TITLE_KEY = "title";
     private static final String WIDTH_KEY = "width";
+    private static final String SCORE_KEY = "score";
     private static final String UP_VOTES_KEY = "ups";
     private static final String HEIGHT_KEY = "height";
     private static final String DOWN_VOTES_KEY = "downs";
@@ -31,6 +32,7 @@ public class Image implements Parcelable{
     private String title;
     private String description;
 
+    private int score;
     private int upVotes;
     private int downVotes;
 
@@ -60,10 +62,14 @@ public class Image implements Parcelable{
         return upVotes;
     }
 
+    public int getScore() {
+        return score;
+    }
+
     public static List<Image> getImagesFromJasonArray(JSONArray imagesJsonArray) {
         List<Image> imageList = new ArrayList<>();
 
-        int listSize = Math.min(40, imagesJsonArray.length());
+        int listSize = Math.min(60, imagesJsonArray.length());
 
         for(int i = 0; i < listSize; i++) {
             try {
@@ -123,6 +129,7 @@ public class Image implements Parcelable{
                 image.description = imageJsonObject.getString(DESCRIPTION_KEY);
             }
 
+            image.score = imageJsonObject.getInt(SCORE_KEY);
             image.upVotes = imageJsonObject.getInt(UP_VOTES_KEY);
             image.downVotes = imageJsonObject.getInt(DOWN_VOTES_KEY);
 
@@ -145,6 +152,7 @@ public class Image implements Parcelable{
         dest.writeString(title);
         dest.writeString(description);
 
+        dest.writeInt(score);
         dest.writeInt(upVotes);
         dest.writeInt(downVotes);
     }
@@ -166,6 +174,7 @@ public class Image implements Parcelable{
         this.title = source.readString();
         this.description = source.readString();
 
+        this.score = source.readInt();
         this.upVotes = source.readInt();
         this.downVotes = source.readInt();
     }

@@ -71,6 +71,8 @@ public class ImageActivity extends ActionBarActivity {
         TextView descriptionTextView = (TextView)
                 findViewById(R.id.description);
 
+        ImageDetailInfoLayout scoreLayout = (ImageDetailInfoLayout)
+                findViewById(R.id.score);
         ImageDetailInfoLayout upVotesLayout = (ImageDetailInfoLayout)
                 findViewById(R.id.ups);
         ImageDetailInfoLayout downVotesLayout = (ImageDetailInfoLayout)
@@ -108,7 +110,7 @@ public class ImageActivity extends ActionBarActivity {
             descriptionTextView.setText(R.string.image_no_Description);
         }
 
-
+        scoreLayout.setContentText(image.getScore() + "");
         upVotesLayout.setContentText(image.getUpVotes() + "");
         downVotesLayout.setContentText(image.getDownVotes() + "");
     }

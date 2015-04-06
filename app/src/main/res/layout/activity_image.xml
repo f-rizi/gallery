@@ -90,6 +90,12 @@
                         android:text="@string/image_details" />
 
                     <com.example.fatemeh.gallery.views.ImageDetailInfoLayout
+                        android:id="@+id/score"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:title="@string/image_score" />
+
+                    <com.example.fatemeh.gallery.views.ImageDetailInfoLayout
                         android:id="@+id/ups"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
