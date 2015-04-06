@@ -1,6 +1,8 @@
 package com.example.fatemeh.gallery.adapters;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -71,7 +73,10 @@ public class ImagesAdapter extends
         holder.itemLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onItemClick(image);
+                Bitmap bitmap = ((BitmapDrawable)
+                        holder.networkImageView.getDrawable()).getBitmap();
+
+                listener.onItemClick(image, bitmap);
             }
         });
     }
@@ -100,6 +105,6 @@ public class ImagesAdapter extends
     }
 
     public interface onItemInteractionListener {
-        void onItemClick(Image image);
+        void onItemClick(Image image, Bitmap bitmap);
     }
 }

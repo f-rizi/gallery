@@ -6,11 +6,12 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.graphics.Palette;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -267,10 +268,28 @@ public class MainActivity extends ActionBarActivity implements
     }
 
     @Override
-    public void onItemClick(Image image) {
+    public void onItemClick(Image image, Bitmap bitmap) {
+        int color = getImageColor(bitmap);
+
         Intent intent = new Intent(this, ImageActivity.class);
         intent.putExtra(ImageActivity.IMAGE_LINK_KEY, image);
+        intent.putExtra(ImageActivity.Image_COLOR_KEY, color);
         startActivity(intent);
+    }
+
+    private int getImageColor(Bitmap bitmap) {
+        int color = getResources().getColor(R.color.blue_gray_700);
+
+        if(bitmap != null) {
+            Palette palette  = Palette.generate(bitmap, 32);
+            Palette.Swatch swatch = palette.getLightVibrantSwatch();
+
+            if(swatch != null) {
+                color = swatch.getRgb();
+            }
+        }
+
+        return color;
     }
 
     private void enableSpinner() {

@@ -20,6 +20,7 @@ import com.example.fatemeh.gallery.views.ImageDetailInfoLayout;
 public class ImageActivity extends ActionBarActivity {
 
     public static final String IMAGE_LINK_KEY = "imageLink";
+    public static final String Image_COLOR_KEY = "imageColor";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,9 +30,12 @@ public class ImageActivity extends ActionBarActivity {
         setToolbar();
         enableSpinner();
 
+        int defaultColor = getResources().getColor(R.color.blue_gray_700);
+
         Intent intent = getIntent();
         Image image = intent.getParcelableExtra(IMAGE_LINK_KEY);
-        showImageDetails(image);
+        int color = intent.getIntExtra(Image_COLOR_KEY, defaultColor);
+        showImageDetails(image, color);
     }
 
     private void enableSpinner() {
@@ -62,12 +66,15 @@ public class ImageActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void showImageDetails(Image image) {
+    private void showImageDetails(Image image, int color) {
         final ImageView imageImageView = (ImageView)
                 findViewById(R.id.image);
 
         TextView titleTextView = (TextView)
                 findViewById(R.id.title);
+
+        titleTextView.setBackgroundColor(color);
+
         TextView descriptionTextView = (TextView)
                 findViewById(R.id.description);
 
@@ -98,13 +105,13 @@ public class ImageActivity extends ActionBarActivity {
                     }
                 });
 
-        if(image.getTitle() != null) {
+        if (image.getTitle() != null) {
             titleTextView.setText(image.getTitle());
         } else {
             titleTextView.setText(R.string.image_no_title);
         }
 
-        if(image.getDescription() != null) {
+        if (image.getDescription() != null) {
             descriptionTextView.setText(image.getDescription());
         } else {
             descriptionTextView.setText(R.string.image_no_Description);
