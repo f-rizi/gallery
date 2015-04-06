@@ -98,13 +98,12 @@ public abstract class BaseListFragment extends Fragment {
     }
 
     public interface OnFragmentInteractionListener {
-        public void onImageClick(Uri uri);
     }
 
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-
-        outState.putParcelableArrayList(IMAGE_LIST_KEY, (ArrayList<? extends Parcelable>) imageList);
-    }
+//    @Override
+//    public void onSaveInstanceState(Bundle outState) {
+//        super.onSaveInstanceState(outState);
+//
+//        outState.putParcelableArrayList(IMAGE_LIST_KEY, (ArrayList<? extends Parcelable>) imageList);
+//    }
 }

@@ -267,10 +267,6 @@ public class MainActivity extends ActionBarActivity implements
     }
 
     @Override
-    public void onImageClick(Uri uri) {
-    }
-
-    @Override
     public void onItemClick(Image image) {
         Intent intent = new Intent(this, ImageActivity.class);
         intent.putExtra(ImageActivity.IMAGE_LINK_KEY, image);
